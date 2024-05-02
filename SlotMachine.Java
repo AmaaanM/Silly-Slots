@@ -9,6 +9,7 @@ public class SlotMachine {
     private static final int SPIN_COST = 25;
     private static int balance;
     private static Scanner scanner;
+    private static String username;
 
     public static void main(String[] args) {
         balance = INITIAL_BALANCE;
@@ -18,7 +19,7 @@ public class SlotMachine {
 
        
         System.out.print("Enter your username: ");
-        String username = scanner.nextLine();
+        username = scanner.nextLine();
 
        
         while (balance >= 0) {
@@ -57,7 +58,6 @@ public class SlotMachine {
                 switch (randomEvent) {
                     case 0:
                         System.out.println("Your gambling habits overtook you. You spun the slot machine again.");
-                    } 
                     case 1: 
                 }
                 
@@ -94,6 +94,7 @@ public class SlotMachine {
 
     private static void drasticMeasures() {
         int randomEvent = (int) (Math.random() * 20);
+
         switch (randomEvent) {
             case 0:
                 System.out.println("Auction your kid off in the black market: 3 spins ($75)");
@@ -114,7 +115,7 @@ public class SlotMachine {
             case 4:
                 System.out.println("You move to new mexico and start cooking crystal meth: You now have $200 but are now bald"); //(Your username at the top changes to Heisenberg)
                 balance += 200;
-                String username = "Heisenberg";
+                username = "Heisenberg";
                 break;
             case 5:
                 System.out.println("Help Dr. Schimdt in cheating to win a Jeopardy game: 20 spins ($500)"); 
@@ -123,12 +124,12 @@ public class SlotMachine {
             case 6:
                 System.out.println("Identity fraud: You steal the identity of this person Leanne Keeley. You withdraw $150 from their bank account: 6 spins"); //(Your username changes to Leanne Keeley)
                 balance += 150;
-                String username = "Leanne Keeley";
+                username = "Leanne Keeley";
                 break;
             case 7:
                 System.out.println("You give up all of your earthly desires - $75 but die in 2 turns out of starvation (Death)"); //(Your username gets “Monk” before it).
                 balance += 75;
-                String username = "Monk" + username;
+                username = "Monk" + username;
                 break;
             // Add more cases for other drastic measures, so on so forth->
             default:
