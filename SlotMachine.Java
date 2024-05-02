@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -9,6 +10,7 @@ public class SlotMachine {
     private static final int SPIN_COST = 25;
     private static int balance;
     private static Scanner scanner;
+    private static String username;
 
     public static void main(String[] args) {
         balance = INITIAL_BALANCE;
@@ -18,7 +20,7 @@ public class SlotMachine {
 
        
         System.out.print("Enter your username: ");
-        String username = scanner.nextLine();
+        username = scanner.nextLine();
 
        
         while (balance >= 0) {
@@ -53,17 +55,68 @@ public class SlotMachine {
         String spin = scanner.nextLine();
         if(spin.equalsIgnoreCase("y") || spin.equalsIgnoreCase("n")){
             if(spin.equalsIgnoreCase("n")){
-                int randomEvent = (int) (Math.random() * 2);
-                switch (randomEvent) {
+                Random rand = new Random();
+                int randomE = rand.nextInt(4);
+                switch (randomE) {
                     case 0:
                         System.out.println("Your gambling habits overtook you. You spun the slot machine again.");
-                    } 
+                    
                     case 1: 
+                        System.out.println("Are you sure you want to quit? y/n");
+                        String ans = scanner.nextLine();
+                        if(ans.equalsIgnoreCase("n")){
+                            break;
+                        }
+                        System.out.println("Are you positive? y/n");
+                        ans = scanner.nextLine();
+                        if(ans.equalsIgnoreCase("n")){
+                            break;
+                        }
+                        System.out.println("Are you 100% sure? y/n");
+                        ans = scanner.nextLine();
+                        if(ans.equalsIgnoreCase("n")){
+                            break;
+                        }
+                        System.out.println("Are you sure you're sure? y/n");
+                        ans = scanner.nextLine();
+                        if(ans.equalsIgnoreCase("n")){
+                            break;
+                        }
+                        System.out.println("Are you sure you're sure you're sure? y/n");
+                        ans = scanner.nextLine();
+                        if(ans.equalsIgnoreCase("n")){
+                            break;
+                        }
+                        System.out.println("Are you sure you're sure you're sure you're sure? y/n");
+                        ans = scanner.nextLine();
+                        if(ans.equalsIgnoreCase("n")){
+                            break;
+                        }
+                        System.out.println("Are you sure you're sure you're sure you're sure? y/n");
+                        ans = scanner.nextLine();
+                        if(ans.equalsIgnoreCase("n")){
+                            break;
+                        } else {
+                            System.out.println("You overcame your gambling habits and left the casino. Congratulations you quitter!");
+                            balance = -1;
+                            break;
+                        }
+                    
+                    case 2: 
+                        System.out.println("A wise voice echoes in your mind...");
+                        try {
+                            TimeUnit.SECONDS.sleep(2);
+                        } catch (InterruptedException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                        System.out.println("\"90% of Gamblers Quit Before They Hit It Big.\"");
+                        System.out.println("You decide to spin anyways.");
+                    
                 }
                 
 
             }
-            //.5 sec delay
             try {
                 System.out.print("Spinning");
                 TimeUnit.MILLISECONDS.sleep(500);
@@ -124,7 +177,7 @@ public class SlotMachine {
                 balance += 150;
                 break;
             case 7:
-                System.out.println("You give up all of your earthly desires - $75 but die in 2 turns out of starvation (Death)"); //(Your username gets “Monk” before it).
+                System.out.println("You give up all of your earthly desires - $75"); //(Your username gets “Monk” before it) and you die in 2 turns out of starvation (Death).
                 balance += 75;
                 break;
             // Add more cases for other drastic measures, so on so forth->
