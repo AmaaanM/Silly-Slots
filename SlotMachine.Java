@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class SlotMachine {
     private static final String[] SLOT_ITEMS = {"7️⃣", "🍒", "🍉", "🍋", "🍊"};
@@ -12,7 +13,7 @@ public class SlotMachine {
     public static void main(String[] args) {
         balance = INITIAL_BALANCE;
         scanner = new Scanner(System.in);
-
+        spinReels();
         System.out.println("Welcome to the Slot Machine!");
 
        
@@ -26,7 +27,6 @@ public class SlotMachine {
             scanner.nextLine();
 
             
-            spinReels();
 
          
             balance -= SPIN_COST;
@@ -49,6 +49,42 @@ public class SlotMachine {
 
     private static void spinReels() {
         // add the logic for spinning
+        System.out.println("Spin? y/n");
+        String spin = scanner.nextLine();
+        if(spin.equalsIgnoreCase("y") || spin.equalsIgnoreCase("n")){
+            if(spin.equalsIgnoreCase("n")){
+                int randomEvent = (int) (Math.random() * 2);
+                switch (randomEvent) {
+                    case 0:
+                        System.out.println("Your gambling habits overtook you. You spun the slot machine again.");
+                    } 
+                    case 1: 
+                }
+                
+
+            }
+            //.5 sec delay
+            try {
+                System.out.print("Spinning");
+                TimeUnit.MILLISECONDS.sleep(500);
+                System.out.print(".");
+                //.5 sec delay
+                TimeUnit.MILLISECONDS.sleep(500);
+                System.out.print(".");
+                //.5 sec delay
+                TimeUnit.MILLISECONDS.sleep(500);
+                System.out.print(".");
+                //.5 sec delay
+                TimeUnit.MILLISECONDS.sleep(500);
+                System.out.println(".");
+                //.5 sec delay
+                TimeUnit.MILLISECONDS.sleep(200);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            
+        } 
     }
 
     private static int calculateWinnings() {
