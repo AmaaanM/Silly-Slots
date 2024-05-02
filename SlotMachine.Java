@@ -104,8 +104,28 @@ public class SlotMachine {
                 balance = -1; // I think this will end the game
                 break;
             case 2:
-                System.out.println("Sell your kidney: 6 spins ($150)");
+                System.out.println("Pull the plug on your ill father and get the inheritance money: 2 spins ($50)");
+                balance += 50;
+                break;
+            case 3:
+                System.out.println("You go to sell your kidney, but the procedure goes wrong: Death (Game Ends)");
+                balance = -1;
+                break;
+            case 4:
+                System.out.println("You move to new mexico and start cooking crystal meth: You now have $200 but are now bald"); //(Your username at the top changes to Heisenberg)
+                balance += 200;
+                break;
+            case 5:
+                System.out.println("Help Dr. Schimdt in cheating to win a Jeopardy game: 20 spins ($500)"); 
+                balance += 500;
+                break;
+            case 6:
+                System.out.println("Identity fraud: You steal the identity of this person Leanne Keeley. You withdraw $150 from their bank account: 6 spins"); //(Your username changes to Leanne Keeley)
                 balance += 150;
+                break;
+            case 7:
+                System.out.println("You give up all of your earthly desires - $75 but die in 2 turns out of starvation (Death)"); //(Your username gets “Monk” before it).
+                balance += 75;
                 break;
             // Add more cases for other drastic measures, so on so forth->
             default:
