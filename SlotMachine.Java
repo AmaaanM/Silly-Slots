@@ -57,6 +57,24 @@ public class SlotMachine {
     }
 
     private static void drasticMeasures() {
-        // add logic for the drastic measures
+        int randomEvent = (int) (Math.random() * 20);
+        switch (randomEvent) {
+            case 0:
+                System.out.println("Auction your kid off in the black market: 3 spins ($75)");
+                balance += 75;
+                break;
+            case 1:
+                System.out.println("Rob PaceMart at gunpoint: 20 to life (Game Ends)");
+                balance = -1; // I think this will end the game
+                break;
+            case 2:
+                System.out.println("Sell your kidney: 6 spins ($150)");
+                balance += 150;
+                break;
+            // Add more cases for other drastic measures, so on so forth->
+            default:
+                // Case in which no drastic measure is taken
+                break;
+        }
     }
 }
