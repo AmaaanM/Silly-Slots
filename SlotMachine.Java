@@ -15,7 +15,6 @@ public class SlotMachine {
     public static void main(String[] args) {
         balance = INITIAL_BALANCE;
         scanner = new Scanner(System.in);
-        spinReels();
         System.out.println("Welcome to the Slot Machine!");
 
        
@@ -25,14 +24,14 @@ public class SlotMachine {
        
         while (balance >= 0) {
             System.out.println("Balance: $" + balance);
-            System.out.println("Press Enter to spin the slots (Cost: $" + SPIN_COST + ")");
-            scanner.nextLine();
+            //System.out.println("Press Enter to spin the slots (Cost: $" + SPIN_COST + ")");
+            //scanner.nextLine();
 
             
 
          
             balance -= SPIN_COST;
-
+            spinReels();
       
             int winnings = calculateWinnings();
             if (winnings > 0) {
@@ -40,8 +39,10 @@ public class SlotMachine {
                 balance += winnings;
             }
 
-       
-            drasticMeasures();
+            if (balance < SPIN_COST){
+                drasticMeasures();
+            }
+            
         }
 
         
@@ -56,10 +57,11 @@ public class SlotMachine {
         if(spin.equalsIgnoreCase("y") || spin.equalsIgnoreCase("n")){
             if(spin.equalsIgnoreCase("n")){
                 Random rand = new Random();
-                int randomE = rand.nextInt(4);
+                int randomE = rand.nextInt(4) - 1;
                 switch (randomE) {
                     case 0:
                         System.out.println("Your gambling habits overtook you. You spun the slot machine again.");
+                        break;
                     case 1: 
                         System.out.println("Are you sure you want to quit? y/n");
                         String ans = scanner.nextLine();
