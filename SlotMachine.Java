@@ -141,13 +141,13 @@ public class SlotMachine {
             // ASCII art logic starts here
             System.out.println("Spinning the reels...\n");
 
-            // Generate random indices for each reel
+            // This will generate random indices for each reel
             int[] reelIndices = new int[3];
             for (int i = 0; i < 3; i++) {
                 reelIndices[i] = (int) (Math.random() * SLOT_ITEMS.length);
             }
         
-            // Print ASCII art for the reels
+            // This will actually print ASCII art for the reels
             for (int row = 0; row < 3; row++) {
                 for (int reel = 0; reel < 3; reel++) {
                     System.out.print(" _____ ");
@@ -171,9 +171,9 @@ public class SlotMachine {
                 System.out.println("\n");
             }
         
-            // Additional logic if needed after printing the ASCII art
-            //System.out.println("Press Enter to stop the spinning...");
-            //scanner.nextLine();
+            // Additional logic fro after the ASCII art is printing and the slots starts spinning
+            System.out.println("Press Enter to stop the spinning...");
+            scanner.nextLine();
             }
         } 
 
