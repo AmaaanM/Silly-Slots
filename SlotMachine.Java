@@ -44,7 +44,6 @@ public class SlotMachine {
             }
             
         }
-
         
         System.out.println("Game over! You are out of balance.");
         scanner.close();
@@ -138,8 +137,45 @@ public class SlotMachine {
                 e.printStackTrace();
             }
             
+            
+            // ASCII art logic starts here
+            System.out.println("Spinning the reels...\n");
+
+            // Generate random indices for each reel
+            int[] reelIndices = new int[3];
+            for (int i = 0; i < 3; i++) {
+                reelIndices[i] = (int) (Math.random() * SLOT_ITEMS.length);
+            }
+        
+            // Print ASCII art for the reels
+            for (int row = 0; row < 3; row++) {
+                for (int reel = 0; reel < 3; reel++) {
+                    System.out.print(" _____ ");
+                }
+                System.out.println();
+        
+                for (int reel = 0; reel < 3; reel++) {
+                    System.out.print("|     |");
+                }
+                System.out.println();
+        
+                for (int reel = 0; reel < 3; reel++) {
+                    String item = SLOT_ITEMS[(reelIndices[reel] + row) % SLOT_ITEMS.length];
+                    System.out.print("|  " + item + "  |");
+                }
+                System.out.println();
+        
+                for (int reel = 0; reel < 3; reel++) {
+                    System.out.print("|_____|");
+                }
+                System.out.println("\n");
+            }
+        
+            // Additional logic if needed after printing the ASCII art
+            //System.out.println("Press Enter to stop the spinning...");
+            //scanner.nextLine();
+            }
         } 
-    }
 
     private static int calculateWinnings() {
         // add winnings calculation logic
