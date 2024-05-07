@@ -46,11 +46,11 @@ public class SlotMachine {
         if (response.equalsIgnoreCase("y")) {
             drasticMeasures();
             if (balance <= 0) {
-                System.out.println("Game over! You are out of balance.");
+                System.out.println("Game over! You are broke.");
                 break;
             }
         } else if (response.equalsIgnoreCase("n")) {
-            System.out.println("Game over! You chose not to take drastic measures.");
+            System.out.println("99% of Gamblers quit before they win big. You Lose :(");
             break;
         } else {
             System.out.println("Invalid input. Game over.");
