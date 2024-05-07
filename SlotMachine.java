@@ -29,11 +29,6 @@ public class SlotMachine {
          
             balance -= SPIN_COST;
             spinReels();
-      
-    if (balance < 25){
-        System.out.println("You are too broke to gamble right now");
-        drasticMeasures();
-    }
 
 
     while (balance >= 0) {
@@ -48,8 +43,8 @@ public class SlotMachine {
         balance += winnings;
     }
 
-    if (balance <= 0) {
-        System.out.println("Your balance is $0. Would you like to take drastic measures? (y/n)");
+    if (balance <= 0 || balance < 25) {
+        System.out.println("Your balance is $" + balance + " you do not have enough money to roll again would you like to take drastic measures? (y/n)");
         String response = scanner.nextLine();
         if (response.equalsIgnoreCase("y")) {
             drasticMeasures();
