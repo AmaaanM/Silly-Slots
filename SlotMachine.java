@@ -274,7 +274,7 @@ public class SlotMachine {
             case 7:
                 System.out.println("You give up all of your earthly desires - $75"); //(Your username gets “Monk” before it) and you die in 2 turns out of starvation (Death).
                 balance += 75;
-                username = "Monk" + username;
+                username = "Monk " + username;
                 break;
             // Add more cases for other drastic measures, so on so forth->
             default:
