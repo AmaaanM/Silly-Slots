@@ -1,13 +1,13 @@
 import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 import java.util.Collections;
 import java.util.List;
 import java.util.Arrays;
 
 
 public class SlotMachine {
-    // private static final String[] SLOT_ITEMS = {"7.", "🍒.", "🍉.", "🍋.", "🍊."};
     private static final String[] SLOT_ITEMS = {"7.", "🍒.", "🍉.", "🍋.", "🍊."};
     private static final int[] POINT_VALUES = {2500, 1000, 500, 100, 50};
     private static final String[] RAN_GEN_ITEMS = {null, null, null};
@@ -21,8 +21,12 @@ public class SlotMachine {
     public static void main(String[] args) {
         balance = INITIAL_BALANCE;
         scanner = new Scanner(System.in);
-        System.out.println("Welcome to the Slot Machine!");
-
+        System.out.println("🎰 Welcome to the Silly Slots! 🎰");
+        System.out.println("In this game, you'll be playing a virtual slot machine.");
+        System.out.println("You'll start with an initial balance of $" + INITIAL_BALANCE + ".");
+        System.out.println("Each spin costs $" + SPIN_COST + ". Try to win as much as you can!");
+        System.out.println("If your money runs out, don't worry we've got you covered!");
+        System.out.println("Let's get started!");
        
         System.out.print("Enter your username: ");
         username = scanner.nextLine();
@@ -45,29 +49,55 @@ public class SlotMachine {
     }
 
     if (balance < 25) {
-        System.out.println("You do not have enough money to roll again would you like to take drastic measures? (y/n)");
+        System.out.println("You do not have enough money to roll again. Would you like to take drastic measures? (y/n)");
         String response = scanner.nextLine();
+        while (!response.equalsIgnoreCase("y") && !response.equalsIgnoreCase("n")) {
+            System.out.println("Invalid input. Please enter 'y' for yes or 'n' for no.");
+            response = scanner.nextLine();
+        }
         if (response.equalsIgnoreCase("y")) {
             drasticMeasures();
             if (balance < 25) {
-                System.out.println("Game over! You are broke.");
+                System.out.println("Game over!");
                 break;
             }
         } else if (response.equalsIgnoreCase("n")) {
             System.out.println("99% of Gamblers Quit Before They Win Big. You Lose :(");
             break;
-        } else {
-            System.out.println("Invalid input. Game over.");
-            break;
-         }
         }
     }
+}    
+    // if (balance < 25) {
+    //     System.out.println("You do not have enough money to roll again would you like to take drastic measures? (y/n)");
+    //     String response = scanner.nextLine();
+    //     if (response.equalsIgnoreCase("y")) {
+    //         drasticMeasures();
+    //         if (balance < 25) {
+    //             System.out.println("Game over! You are broke.");
+    //             break;
+    //         }
+    //     } else if (response.equalsIgnoreCase("n")) {
+    //         System.out.println("99% of Gamblers Quit Before They Win Big. You Lose :(");
+    //         break;
+    //     } else {
+    //         System.out.println("Invalid input. Game over.");
+    //         break;
+    //      }
+    //     }
+    // }
 }
             
     private static void spinReels() {
         // add the logic for spinning
-        System.out.println("Spin? y/n");
-        String spin = scanner.nextLine();
+        String spin;
+        do {
+            System.out.println("Spin? y/n");
+            spin = scanner.nextLine();
+            if (!Pattern.matches("[a-zA-Z]+", spin)) {
+                System.out.println("Invalid input. Please enter 'y' for yes or 'n' for no.");
+            }
+        } while (!Pattern.matches("[a-zA-Z]+", spin));
+        
         if(spin.equalsIgnoreCase("y") || spin.equalsIgnoreCase("n")){
             if(spin.equalsIgnoreCase("n")){
                 Random rand = new Random();
@@ -244,19 +274,19 @@ public class SlotMachine {
 
         switch (randomEvent) {
             case 0:
-                System.out.println("Auction your kid off in the black market: 3 spins ($75)");
+                System.out.println("Auction your kid off in the black market: ($75)");
                 balance += 75;
                 break;
             case 1:
-                System.out.println("Rob PaceMart at gunpoint: 20 years to life in prison (Game Ends)");
+                System.out.println("Rob PaceMart at gunpoint: 20 years to life in prison");
                 balance = -1; // I think this will end the game
                 break;
             case 2:
-                System.out.println("Pull the plug on your ill father and get the inheritance money: 2 spins ($50)");
+                System.out.println("Pull the plug on your ill father and get the inheritance money: ($50)");
                 balance += 50;
                 break;
             case 3:
-                System.out.println("You go to sell your kidney, but the procedure goes wrong: Death (Game Ends)");
+                System.out.println("You go to sell your kidney, but the procedure goes wrong: Death");
                 balance = -1;
                 break;
             case 4:
@@ -265,16 +295,16 @@ public class SlotMachine {
                 username = "Heisenberg";
                 break;
             case 5:
-                System.out.println("Help Dr. Schimdt in cheating to win a Jeopardy game: 20 spins ($500)"); 
+                System.out.println("Help Dr. Schimdt in cheating to win a Jeopardy game: ($500)"); 
                 balance += 500;
                 break;
             case 6:
-                System.out.println("Identity fraud: You steal the identity of this person Leanne Keeley. You withdraw $150 from their bank account: 6 spins"); //(Your username changes to Leanne Keeley)
+                System.out.println("Identity fraud: You steal the identity of this person Leanne Keeley. You withdraw $150 from their bank account"); //(Your username changes to Leanne Keeley)
                 balance += 150;
                 username = "Leanne Keeley";
                 break;
             case 7:
-                System.out.println("You give up all of your earthly desires - $75"); //(Your username gets “Monk” before it) and you die in 2 turns out of starvation (Death).
+                System.out.println("You give up all of your earthly desires - $75"); //(Your username gets “Monk” before it).
                 balance += 75;
                 username = "Monk " + username;
                 break;
