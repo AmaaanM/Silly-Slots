@@ -178,20 +178,10 @@ public class SlotMachine {
                     System.out.print("|      |");
                 }
                 System.out.println();
-<<<<<<< HEAD:SlotMachine.Java
-        
-                for (int reel = 0; reel < 3; reel++) {
-                    String item = SLOT_ITEMS[(reelIndices[reel] + row) % SLOT_ITEMS.length];
-                    if(row == 1){
-                        RAN_GEN_ITEMS[reel] = item;
-                    }
-                    System.out.print("|  " + item + "  |");
-=======
 
                 for (String item : row) {
                     String paddedItem = String.format("%-" + (maxLength + 2) + "s", item);
                     System.out.print("|  " + paddedItem + " |");
->>>>>>> f8095e819180793473f24328da6b9620da64596e:SlotMachine.java
                 }
                 System.out.println();
 
@@ -205,37 +195,37 @@ public class SlotMachine {
  
 
     private static int calculateWinnings() {
-        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍊")){
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("Orange")){
             return 5;
         }
-        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍊") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍊")){
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("Orange") && RAN_GEN_ITEMS[1].equalsIgnoreCase("Orange")){
             return 10;
         }
-        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍊") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍊") && RAN_GEN_ITEMS[2].equalsIgnoreCase("🍊")){
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("Orange") && RAN_GEN_ITEMS[1].equalsIgnoreCase("Orange") && RAN_GEN_ITEMS[2].equalsIgnoreCase("Orange")){
             return 25;
         }
-        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍊") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍊") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7️⃣")){
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("Orange") && RAN_GEN_ITEMS[1].equalsIgnoreCase("Orange") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7")){
             return 25;
         }
-        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍋") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍋") && RAN_GEN_ITEMS[2].equalsIgnoreCase("🍋")){
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("Lemon") && RAN_GEN_ITEMS[1].equalsIgnoreCase("Lemon") && RAN_GEN_ITEMS[2].equalsIgnoreCase("Lemon")){
             return 50;
         }
-        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍋") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍋") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7️⃣")){
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("Lemon") && RAN_GEN_ITEMS[1].equalsIgnoreCase("Lemon") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7")){
             return 50;
         }
-        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍉") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍉") && RAN_GEN_ITEMS[2].equalsIgnoreCase("🍉")){
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("Watermelon") && RAN_GEN_ITEMS[1].equalsIgnoreCase("Watermelon") && RAN_GEN_ITEMS[2].equalsIgnoreCase("Watermelon")){
             return 100;
         }
-        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍉") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍉") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7️⃣")){
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("Watermelon") && RAN_GEN_ITEMS[1].equalsIgnoreCase("Watermelon") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7")){
             return 100;
         }
-        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍒") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍒") && RAN_GEN_ITEMS[2].equalsIgnoreCase("🍒")){
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("Cherry") && RAN_GEN_ITEMS[1].equalsIgnoreCase("Cherry") && RAN_GEN_ITEMS[2].equalsIgnoreCase("Cherry")){
             return 1000;
         }
-        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍒") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍒") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7️⃣")){
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("Cherry") && RAN_GEN_ITEMS[1].equalsIgnoreCase("Cherry") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7")){
             return 1000;
         }
-        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("7️⃣") && RAN_GEN_ITEMS[1].equalsIgnoreCase("7️⃣") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7️⃣")){
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("7") && RAN_GEN_ITEMS[1].equalsIgnoreCase("7") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7️")){
             return 2500;
         }
         else{
