@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 public class SlotMachine {
     private static final String[] SLOT_ITEMS = {"7️⃣", "🍒", "🍉", "🍋", "🍊"};
     private static final int[] POINT_VALUES = {2500, 1000, 500, 100, 50};
+    private static final String[] RAN_GEN_ITEMS = {null, null, null};
 
     private static final int INITIAL_BALANCE = 150;
     private static final int SPIN_COST = 25;
@@ -161,6 +162,9 @@ public class SlotMachine {
         
                 for (int reel = 0; reel < 3; reel++) {
                     String item = SLOT_ITEMS[(reelIndices[reel] + row) % SLOT_ITEMS.length];
+                    if(row == 1){
+                        RAN_GEN_ITEMS[reel] = item;
+                    }
                     System.out.print("|  " + item + "  |");
                 }
                 System.out.println();
@@ -178,8 +182,42 @@ public class SlotMachine {
         } 
 
     private static int calculateWinnings() {
-        // add winnings calculation logic
-        return 0; // placeholder so it doesnt give us an error
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍊")){
+            return 5;
+        }
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍊") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍊")){
+            return 10;
+        }
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍊") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍊") && RAN_GEN_ITEMS[2].equalsIgnoreCase("🍊")){
+            return 25;
+        }
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍊") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍊") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7️⃣")){
+            return 25;
+        }
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍋") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍋") && RAN_GEN_ITEMS[2].equalsIgnoreCase("🍋")){
+            return 50;
+        }
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍋") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍋") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7️⃣")){
+            return 50;
+        }
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍉") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍉") && RAN_GEN_ITEMS[2].equalsIgnoreCase("🍉")){
+            return 100;
+        }
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍉") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍉") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7️⃣")){
+            return 100;
+        }
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍒") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍒") && RAN_GEN_ITEMS[2].equalsIgnoreCase("🍒")){
+            return 1000;
+        }
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍒") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍒") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7️⃣")){
+            return 1000;
+        }
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("7️⃣") && RAN_GEN_ITEMS[1].equalsIgnoreCase("7️⃣") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7️⃣")){
+            return 2500;
+        }
+        else{
+            return 0;
+        }
     }
 
     private static void drasticMeasures() {
