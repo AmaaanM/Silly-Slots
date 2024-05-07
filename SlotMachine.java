@@ -7,7 +7,8 @@ import java.util.Arrays;
 
 
 public class SlotMachine {
-    private static final String[] SLOT_ITEMS = {"7", "Cherry", "Watermelon", "Lemon", "Orange"};
+    // private static final String[] SLOT_ITEMS = {"7.", "🍒.", "🍉.", "🍋.", "🍊."};
+    private static final String[] SLOT_ITEMS = {"7.", "🍒.", "🍉.", "🍋.", "🍊."};
     private static final int[] POINT_VALUES = {2500, 1000, 500, 100, 50};
     private static final String[] RAN_GEN_ITEMS = {null, null, null};
 
@@ -174,7 +175,7 @@ public class SlotMachine {
 
             for (String[] row : reels) {
                 for (String item : row) {
-                    System.out.print(" ______");
+                    System.out.print(" ______ ");
                 }
                 System.out.println();
 
@@ -184,7 +185,7 @@ public class SlotMachine {
                 System.out.println();
 
                 for (String item : row) {
-                    String paddedItem = String.format("%-" + (maxLength + 2) + "s", item);
+                    String paddedItem = String.format("%-" + (maxLength) + "s", item);
                     System.out.print("|  " + paddedItem + " |");
                 }
                 System.out.println();
@@ -199,37 +200,37 @@ public class SlotMachine {
  
 
     private static int calculateWinnings() {
-        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("Orange")){
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍊.")){
             return 5;
         }
-        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("Orange") && RAN_GEN_ITEMS[1].equalsIgnoreCase("Orange")){
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍊.") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍊.")){
             return 10;
         }
-        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("Orange") && RAN_GEN_ITEMS[1].equalsIgnoreCase("Orange") && RAN_GEN_ITEMS[2].equalsIgnoreCase("Orange")){
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍊.") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍊.") && RAN_GEN_ITEMS[2].equalsIgnoreCase("🍊.")){
             return 25;
         }
-        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("Orange") && RAN_GEN_ITEMS[1].equalsIgnoreCase("Orange") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7")){
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍊.") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍊.") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7.")){
             return 25;
         }
-        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("Lemon") && RAN_GEN_ITEMS[1].equalsIgnoreCase("Lemon") && RAN_GEN_ITEMS[2].equalsIgnoreCase("Lemon")){
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍋.") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍋.") && RAN_GEN_ITEMS[2].equalsIgnoreCase("🍋.")){
             return 50;
         }
-        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("Lemon") && RAN_GEN_ITEMS[1].equalsIgnoreCase("Lemon") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7")){
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍋.") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍋.") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7.")){
             return 50;
         }
-        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("Watermelon") && RAN_GEN_ITEMS[1].equalsIgnoreCase("Watermelon") && RAN_GEN_ITEMS[2].equalsIgnoreCase("Watermelon")){
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("7.") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍉.") && RAN_GEN_ITEMS[2].equalsIgnoreCase("🍉.")){
             return 100;
         }
-        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("Watermelon") && RAN_GEN_ITEMS[1].equalsIgnoreCase("Watermelon") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7")){
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍉.") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍉.") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7.")){
             return 100;
         }
-        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("Cherry") && RAN_GEN_ITEMS[1].equalsIgnoreCase("Cherry") && RAN_GEN_ITEMS[2].equalsIgnoreCase("Cherry")){
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍒.") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍒.") && RAN_GEN_ITEMS[2].equalsIgnoreCase("🍒.")){
             return 1000;
         }
-        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("Cherry") && RAN_GEN_ITEMS[1].equalsIgnoreCase("Cherry") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7")){
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍒.") && RAN_GEN_ITEMS[1].equalsIgnoreCase("🍒.") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7.")){
             return 1000;
         }
-        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("7") && RAN_GEN_ITEMS[1].equalsIgnoreCase("7") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7️")){
+        if(RAN_GEN_ITEMS[0].equalsIgnoreCase("7.") && RAN_GEN_ITEMS[1].equalsIgnoreCase("7.") && RAN_GEN_ITEMS[2].equalsIgnoreCase("7.")){
             return 2500;
         }
         else{
@@ -243,7 +244,7 @@ public class SlotMachine {
         switch (randomEvent) {
             case 0:
                 System.out.println("Auction your kid off in the black market: 3 spins ($75)");
-                balance += 75;
+                balance += 7.5;
                 break;
             case 1:
                 System.out.println("Rob PaceMart at gunpoint: 20 years to life in prison (Game Ends)");
