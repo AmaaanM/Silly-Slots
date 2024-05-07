@@ -30,6 +30,12 @@ public class SlotMachine {
             balance -= SPIN_COST;
             spinReels();
       
+    if (balance < 25){
+        System.out.println("You are too broke to gamble right now");
+        drasticMeasures();
+    }
+
+
     while (balance >= 0) {
     System.out.println("Balance: $" + balance);
     System.out.println("Username:" + username);
