@@ -44,7 +44,7 @@ public class SlotMachine {
     }
 
     if (balance <= 0 || balance < 25) {
-        System.out.println("Your balance is $" + balance + " you do not have enough money to roll again would you like to take drastic measures? (y/n)");
+        System.out.println("You do not have enough money to roll again would you like to take drastic measures? (y/n)");
         String response = scanner.nextLine();
         if (response.equalsIgnoreCase("y")) {
             drasticMeasures();
@@ -53,7 +53,7 @@ public class SlotMachine {
                 break;
             }
         } else if (response.equalsIgnoreCase("n")) {
-            System.out.println("99% of Gamblers quit before they win big. You Lose :(");
+            System.out.println("99% of Gamblers Quit Before They Win Big. You Lose :(");
             break;
         } else {
             System.out.println("Invalid input. Game over.");
