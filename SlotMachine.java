@@ -67,24 +67,7 @@ public class SlotMachine {
         }
     }
 }    
-    // if (balance < 25) {
-    //     System.out.println("You do not have enough money to roll again would you like to take drastic measures? (y/n)");
-    //     String response = scanner.nextLine();
-    //     if (response.equalsIgnoreCase("y")) {
-    //         drasticMeasures();
-    //         if (balance < 25) {
-    //             System.out.println("Game over! You are broke.");
-    //             break;
-    //         }
-    //     } else if (response.equalsIgnoreCase("n")) {
-    //         System.out.println("99% of Gamblers Quit Before They Win Big. You Lose :(");
-    //         break;
-    //     } else {
-    //         System.out.println("Invalid input. Game over.");
-    //         break;
-    //      }
-    //     }
-    // }
+    
 }
             
     private static void spinReels() {
