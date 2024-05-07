@@ -168,6 +168,10 @@ public class SlotMachine {
                 {shuffledItems[2], shuffledItems[3], shuffledItems[4]}
             };
 
+            RAN_GEN_ITEMS[0] = shuffledItems[1];
+            RAN_GEN_ITEMS[1] = shuffledItems[2];
+            RAN_GEN_ITEMS[2] = shuffledItems[3];
+
             for (String[] row : reels) {
                 for (String item : row) {
                     System.out.print(" ______");
