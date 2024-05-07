@@ -1,9 +1,13 @@
 import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+import java.util.Collections;
+import java.util.List;
+import java.util.Arrays;
+
 
 public class SlotMachine {
-    private static final String[] SLOT_ITEMS = {"7️⃣", "🍒", "🍉", "🍋", "🍊"};
+    private static final String[] SLOT_ITEMS = {"7", "Cherry", "Watermelon", "Lemon", "Orange"};
     private static final int[] POINT_VALUES = {2500, 1000, 500, 100, 50};
     private static final String[] RAN_GEN_ITEMS = {null, null, null};
 
@@ -21,35 +25,42 @@ public class SlotMachine {
        
         System.out.print("Enter your username: ");
         username = scanner.nextLine();
-
-       
-        while (balance >= 0) {
-            System.out.println("Balance: $" + balance);
-            //System.out.println("Press Enter to spin the slots (Cost: $" + SPIN_COST + ")");
-            //scanner.nextLine();
-
-            
-
          
             balance -= SPIN_COST;
             spinReels();
       
-            int winnings = calculateWinnings();
-            if (winnings > 0) {
-                System.out.println("Congratulations! You won $" + winnings);
-                balance += winnings;
-            }
+    while (balance >= 0) {
+    System.out.println("Balance: $" + balance);
+    System.out.println("Username:" + username);
+    balance -= SPIN_COST;
+    spinReels();
 
-            if (balance < SPIN_COST){
-                drasticMeasures();
-            }
-            
-        }
-        
-        System.out.println("Game over! You are out of balance.");
-        scanner.close();
+    int winnings = calculateWinnings();
+    if (winnings > 0) {
+        System.out.println("Congratulations! You won $" + winnings);
+        balance += winnings;
     }
 
+    if (balance <= 0) {
+        System.out.println("Your balance is $0. Would you like to take drastic measures? (y/n)");
+        String response = scanner.nextLine();
+        if (response.equalsIgnoreCase("y")) {
+            drasticMeasures();
+            if (balance <= 0) {
+                System.out.println("Game over! You are broke.");
+                break;
+            }
+        } else if (response.equalsIgnoreCase("n")) {
+            System.out.println("99% of Gamblers quit before they win big. You Lose :(");
+            break;
+        } else {
+            System.out.println("Invalid input. Game over.");
+            break;
+         }
+        }
+    }
+}
+            
     private static void spinReels() {
         // add the logic for spinning
         System.out.println("Spin? y/n");
@@ -139,26 +150,35 @@ public class SlotMachine {
             }
             
             
-            // ASCII art logic starts here
-            System.out.println("Spinning the reels...\n");
+            
+            // Randomizes the slot items
+            List<String> itemList = Arrays.asList(SLOT_ITEMS);
+            Collections.shuffle(itemList);
+            String[] shuffledItems = itemList.toArray(new String[0]);
 
-            // This will generate random indices for each reel
-            int[] reelIndices = new int[3];
-            for (int i = 0; i < 3; i++) {
-                reelIndices[i] = (int) (Math.random() * SLOT_ITEMS.length);
+            int maxLength = 0;
+            for (String item : shuffledItems) {
+                maxLength = Math.max(maxLength, item.length());
             }
-        
-            // This will actually print ASCII art for the reels
-            for (int row = 0; row < 3; row++) {
-                for (int reel = 0; reel < 3; reel++) {
-                    System.out.print(" _____ ");
+
+            // ASCII art referening the item slots strings in the array above
+            String[][] reels = {
+                {shuffledItems[0], shuffledItems[1], shuffledItems[2]},
+                {shuffledItems[1], shuffledItems[2], shuffledItems[3]},
+                {shuffledItems[2], shuffledItems[3], shuffledItems[4]}
+            };
+
+            for (String[] row : reels) {
+                for (String item : row) {
+                    System.out.print(" ______");
                 }
                 System.out.println();
-        
-                for (int reel = 0; reel < 3; reel++) {
-                    System.out.print("|     |");
+
+                for (String item : row) {
+                    System.out.print("|      |");
                 }
                 System.out.println();
+<<<<<<< HEAD:SlotMachine.Java
         
                 for (int reel = 0; reel < 3; reel++) {
                     String item = SLOT_ITEMS[(reelIndices[reel] + row) % SLOT_ITEMS.length];
@@ -166,20 +186,23 @@ public class SlotMachine {
                         RAN_GEN_ITEMS[reel] = item;
                     }
                     System.out.print("|  " + item + "  |");
+=======
+
+                for (String item : row) {
+                    String paddedItem = String.format("%-" + (maxLength + 2) + "s", item);
+                    System.out.print("|  " + paddedItem + " |");
+>>>>>>> f8095e819180793473f24328da6b9620da64596e:SlotMachine.java
                 }
                 System.out.println();
-        
-                for (int reel = 0; reel < 3; reel++) {
-                    System.out.print("|_____|");
+
+                for (String item : row) {
+                    System.out.print("|______|");
                 }
-                System.out.println("\n");
+                System.out.println();
             }
-        
-            // Additional logic fro after the ASCII art is printing and the slots starts spinning
-            System.out.println("Press Enter to stop the spinning...");
-            scanner.nextLine();
-            }
-        } 
+        }        
+    }   
+ 
 
     private static int calculateWinnings() {
         if(RAN_GEN_ITEMS[0].equalsIgnoreCase("🍊")){
@@ -221,7 +244,7 @@ public class SlotMachine {
     }
 
     private static void drasticMeasures() {
-        int randomEvent = (int) (Math.random() * 20);
+        int randomEvent = (int) (Math.random() * 9);
 
         switch (randomEvent) {
             case 0:
@@ -229,7 +252,7 @@ public class SlotMachine {
                 balance += 75;
                 break;
             case 1:
-                System.out.println("Rob PaceMart at gunpoint: 20 to life (Game Ends)");
+                System.out.println("Rob PaceMart at gunpoint: 20 years to life in prison (Game Ends)");
                 balance = -1; // I think this will end the game
                 break;
             case 2:
