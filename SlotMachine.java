@@ -31,7 +31,7 @@ public class SlotMachine {
             spinReels();
 
 
-    while (balance >= 0) {
+    while (balance >= 25) {
     System.out.println("Balance: $" + balance);
     System.out.println("Username:" + username);
     balance -= SPIN_COST;
@@ -43,12 +43,12 @@ public class SlotMachine {
         balance += winnings;
     }
 
-    if (balance <= 0 || balance < 25) {
+    if (balance < 25) {
         System.out.println("You do not have enough money to roll again would you like to take drastic measures? (y/n)");
         String response = scanner.nextLine();
         if (response.equalsIgnoreCase("y")) {
             drasticMeasures();
-            if (balance <= 0) {
+            if (balance < 25) {
                 System.out.println("Game over! You are broke.");
                 break;
             }
@@ -245,7 +245,7 @@ public class SlotMachine {
         switch (randomEvent) {
             case 0:
                 System.out.println("Auction your kid off in the black market: 3 spins ($75)");
-                balance += 7.5;
+                balance += 75;
                 break;
             case 1:
                 System.out.println("Rob PaceMart at gunpoint: 20 years to life in prison (Game Ends)");
