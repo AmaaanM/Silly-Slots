@@ -37,6 +37,7 @@ public class SlotMachine {
     balance -= SPIN_COST;
     spinReels();
 
+
     int winnings = calculateWinnings();
     if (winnings > 0) {
         System.out.println("Congratulations! You won $" + winnings);
@@ -111,9 +112,8 @@ public class SlotMachine {
                         if(ans.equalsIgnoreCase("n")){
                             break;
                         } else {
-                            System.out.println("You overcame your gambling habits and left the casino. Congratulations you quitter!");
-                            balance = -1;
-                            break;
+                            System.out.println("You're so close to overcoming your gambling habits, but it's not enough. Spin again!!");
+                        break;
                         }
                     
                     case 2: 
